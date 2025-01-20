@@ -1,0 +1,12 @@
+﻿[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.bookinggeorgia.app_salon",
+      "sha256_cert_fingerprints": [
+        "45:A1:82:5B:C1:79:6B:95:F4:BA:89:52:EF:0D:5D:BF:09:16:9C:3A:62:34:57:EB:0F:8B:D1:16:40:73:52:5D"
+      ]
+    }
+  }
+]
