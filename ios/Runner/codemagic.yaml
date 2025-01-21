@@ -1,0 +1,2 @@
+scripts:
+  - echo "$GOOGLE_SERVICE_INFO" > ios/Runner/GoogleService-Info.plist
