@@ -1,0 +1,12 @@
+workflows:
+  default-workflow:
+    name: Build iOS App
+    environment:
+      flutter: stable
+      vars:
+        GOOGLE_SERVICE_INFO: Encrypted(ABC123...) # Krypterat värde från Codemagic
+    scripts:
+      - echo "Setting up GoogleService-Info.plist"
+      - echo "$GOOGLE_SERVICE_INFO" > ios/Runner/GoogleService-Info.plist
+      - flutter pub get
+      - flutter build ios --release
