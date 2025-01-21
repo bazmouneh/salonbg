@@ -1,0 +1,27 @@
+# .github/workflows/ios-build-and-deploy.yml
+name: iOS Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build iOS app
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: stable
+      - name: Build iOS app
+        run: flutter build ios --release
+      - name: Archive and Deploy to TestFlight
+        run: |
+          xcodebuild -workspace ./ios/Runner.xcworkspace -scheme Runner -configuration Release -archivePath ./build/ios/Runner.xcarchive
+          xcodebuild -exportArchive -archivePath ./build/ios/Runner.xcarchive -exportPath ./build/ios -exportOptionsPlist ./ExportOptions.plist
+          # Deploy to TestFlight or App Store steps
+
