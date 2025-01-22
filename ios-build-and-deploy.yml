@@ -1,11 +1,3 @@
-# .github/workflows/ios-build-and-deploy.yml
-name: iOS Build and Deploy
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   build:
     name: Build iOS app
@@ -23,5 +15,5 @@ jobs:
         run: |
           xcodebuild -workspace ./ios/Runner.xcworkspace -scheme Runner -configuration Release -archivePath ./build/ios/Runner.xcarchive
           xcodebuild -exportArchive -archivePath ./build/ios/Runner.xcarchive -exportPath ./build/ios -exportOptionsPlist ./ExportOptions.plist
-          # Deploy to TestFlight or App Store steps
-
+      - name: Check if GoogleService-Info.plist exists
+        run: ls -al ios/Runner/GoogleService-Info.plist
